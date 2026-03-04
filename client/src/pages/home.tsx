@@ -241,18 +241,15 @@ export default function Home() {
 
               <div className="w-full space-y-4">
                 <p className="text-sm font-medium text-slate-500 text-center">Escolha onde comprar:</p>
-                <div className="grid grid-cols-3 gap-3">
-                  <a href={MARKETPLACE_LINKS.amazon_20x40} target="_blank" rel="noopener noreferrer" className="bg-[#FF9900] hover:bg-[#FF6600] text-white py-4 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-colors shadow-lg">
-                    <img src="/assets/amazon.jpg" className="h-5 rounded" alt="Amazon" />
-                    Amazon
+                <div className="flex items-center justify-center gap-4">
+                  <a href={MARKETPLACE_LINKS.amazon_20x40} target="_blank" rel="noopener noreferrer" className="hover:opacity-80 hover:-translate-y-1 transition-all duration-300" title="Comprar na Amazon">
+                    <img src="/assets/amazon.jpg" className="h-10 w-auto object-contain rounded-lg" alt="Amazon" />
                   </a>
-                  <a href={MARKETPLACE_LINKS.shopee_20x40} target="_blank" rel="noopener noreferrer" className="bg-[#EE4D2D] hover:bg-[#CC3D20] text-white py-4 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-colors shadow-lg">
-                    <img src="/assets/shopee.jpg" className="h-5 rounded" alt="Shopee" />
-                    Shopee
+                  <a href={MARKETPLACE_LINKS.shopee_20x40} target="_blank" rel="noopener noreferrer" className="hover:opacity-80 hover:-translate-y-1 transition-all duration-300" title="Comprar na Shopee">
+                    <img src="/assets/shopee.jpg" className="h-10 w-auto object-contain rounded-lg" alt="Shopee" />
                   </a>
-                  <a href={MARKETPLACE_LINKS.mercadolivre_20x40} target="_blank" rel="noopener noreferrer" className="bg-[#FFE600] hover:bg-[#FFD700] text-slate-900 py-4 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-colors shadow-lg">
-                    <img src="/assets/mercadolivre.jpg" className="h-5 rounded" alt="Mercado Livre" />
-                    ML
+                  <a href={MARKETPLACE_LINKS.mercadolivre_20x40} target="_blank" rel="noopener noreferrer" className="hover:opacity-80 hover:-translate-y-1 transition-all duration-300" title="Comprar no Mercado Livre">
+                    <img src="/assets/mercadolivre.jpg" className="h-10 w-auto object-contain rounded-lg" alt="Mercado Livre" />
                   </a>
                 </div>
               </div>
@@ -284,18 +281,15 @@ export default function Home() {
 
               <div className="w-full space-y-4">
                 <p className="text-sm font-medium text-slate-500 text-center">Escolha onde comprar:</p>
-                <div className="grid grid-cols-3 gap-3">
-                  <a href={MARKETPLACE_LINKS.amazon_28x40} target="_blank" rel="noopener noreferrer" className="bg-[#FF9900] hover:bg-[#FF6600] text-white py-4 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-colors shadow-lg">
-                    <img src="/assets/amazon.jpg" className="h-5 rounded" alt="Amazon" />
-                    Amazon
+                <div className="flex items-center justify-center gap-4">
+                  <a href={MARKETPLACE_LINKS.amazon_28x40} target="_blank" rel="noopener noreferrer" className="hover:opacity-80 hover:-translate-y-1 transition-all duration-300" title="Comprar na Amazon">
+                    <img src="/assets/amazon.jpg" className="h-10 w-auto object-contain rounded-lg" alt="Amazon" />
                   </a>
-                  <a href={MARKETPLACE_LINKS.shopee_28x40} target="_blank" rel="noopener noreferrer" className="bg-[#EE4D2D] hover:bg-[#CC3D20] text-white py-4 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-colors shadow-lg">
-                    <img src="/assets/shopee.jpg" className="h-5 rounded" alt="Shopee" />
-                    Shopee
+                  <a href={MARKETPLACE_LINKS.shopee_28x40} target="_blank" rel="noopener noreferrer" className="hover:opacity-80 hover:-translate-y-1 transition-all duration-300" title="Comprar na Shopee">
+                    <img src="/assets/shopee.jpg" className="h-10 w-auto object-contain rounded-lg" alt="Shopee" />
                   </a>
-                  <a href={MARKETPLACE_LINKS.mercadolivre_28x40} target="_blank" rel="noopener noreferrer" className="bg-[#FFE600] hover:bg-[#FFD700] text-slate-900 py-4 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-colors shadow-lg">
-                    <img src="/assets/mercadolivre.jpg" className="h-5 rounded" alt="Mercado Livre" />
-                    ML
+                  <a href={MARKETPLACE_LINKS.mercadolivre_28x40} target="_blank" rel="noopener noreferrer" className="hover:opacity-80 hover:-translate-y-1 transition-all duration-300" title="Comprar no Mercado Livre">
+                    <img src="/assets/mercadolivre.jpg" className="h-10 w-auto object-contain rounded-lg" alt="Mercado Livre" />
                   </a>
                 </div>
               </div>

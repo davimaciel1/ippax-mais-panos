@@ -133,7 +133,7 @@ export default function ProductHero() {
                       <img
                         src={config.logo}
                         alt={config.displayName}
-                        className="h-9 w-auto object-contain"
+                        className="h-[41px] w-auto object-contain"
                       />
                     </a>
                   ))}
