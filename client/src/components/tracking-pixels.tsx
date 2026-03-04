@@ -3,7 +3,6 @@ interface TrackingPixelsProps {
 }
 
 export default function TrackingPixels(_: TrackingPixelsProps) {
-  // Pixel orchestration intentionally disabled in this static landing build.
   return null
 }
 
