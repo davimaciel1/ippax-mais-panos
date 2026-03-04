@@ -1,57 +1,36 @@
 # Build stage
 FROM node:20-alpine AS builder
-
 WORKDIR /app
-
-# Install Python and build dependencies for better-sqlite3
-RUN apk add --no-cache python3 make g++ py3-pip
-
-# Copy package files
-COPY VinylFloorMarket/package*.json ./
-COPY VinylFloorMarket/tsconfig*.json ./
-
-# Install all dependencies (including dev dependencies for build)
+COPY package*.json ./
 RUN npm ci
+COPY . .
+RUN npx vite build
 
-# Copy source code
-COPY VinylFloorMarket/ ./
+# Production stage - static nginx
+FROM nginx:alpine
+COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Build both frontend and server
-RUN npm run build
+# SPA fallback + gzip + caching
+RUN cat > /etc/nginx/conf.d/default.conf << 'EOF'
+server {
+    listen 80;
+    root /usr/share/nginx/html;
+    index index.html;
 
-# Runtime stage
-FROM node:20-alpine
+    gzip on;
+    gzip_types text/plain text/css application/json application/javascript text/xml image/svg+xml;
+    gzip_min_length 256;
 
-WORKDIR /app
+    location ~* \.(jpg|jpeg|png|gif|ico|svg|webp|woff|woff2|ttf|css|js|mp4)$ {
+        expires 30d;
+        add_header Cache-Control "public, immutable";
+    }
 
-# Install Python and runtime dependencies
-RUN apk add --no-cache python3
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}
+EOF
 
-# Copy package files
-COPY VinylFloorMarket/package*.json ./
-
-# Install only production dependencies
-RUN npm ci --only=production
-
-# Copy built server from builder stage
-COPY --from=builder /app/dist ./dist
-
-# Copy shared folder (might be needed at runtime)
-COPY VinylFloorMarket/shared ./shared
-
-# Copy any necessary config files
-COPY VinylFloorMarket/.env* ./
-
-# Set environment
-ENV NODE_ENV=production
-ENV PORT=3000
-
-# Expose port
-EXPOSE 3000
-
-# Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD node -e "require('http').get('http://localhost:3000/api/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1); })"
-
-# Start server with compiled JavaScript
-CMD ["node", "dist/server/index.js"]
+EXPOSE 80
+HEALTHCHECK --interval=30s --timeout=3s --retries=3 CMD wget -qO- http://localhost/ || exit 1
