@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Redirecionando…</title>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    (function(w,d,s,l,i){
+      w[l]=w[l]||[]; w[l].push({'gtm.start': new Date().getTime(), event:'gtm.js'});
+      var f=d.getElementsByTagName(s)[0], j=d.createElement(s), dl=l!='dataLayer'?'&l='+l:'';
+      j.async=true; j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+      f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WKN7TSGC');
+  </script>
+  <noscript><meta http-equiv="refresh" content="0;url=/"></noscript>
+</head>
+<body>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKN7TSGC" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <main style="font:16px/1.4 system-ui;max-width:640px;margin:64px auto;padding:0 16px;text-align:center">
+    <h1>Redirecionando…</h1>
+    <p id="msg">Preparando seu destino.</p>
+    <p><a id="out" href="/" rel="nofollow noopener">Prosseguir</a></p>
+  </main>
+  <script>
+    (function(){
+      const map = {
+        amazon: 'https://amzn.to/4m5Cwa9',
+        shopee: 'https://s.shopee.com.br/9ADrsLZFu3',
+        ml: 'https://mercadolivre.com/sec/1osANJb',
+        mercadolivre: 'https://mercadolivre.com/sec/1osANJb'
+      };
+      
+      // Extrair o slug da URL - funciona tanto para /go/amazon quanto para query string
+      const parts = location.pathname.replace(/^\/+|\/+$/g,'').split('/');
+      let slug = parts[parts.length - 1]; // pega última parte do path
+      
+      // Se não houver slug no path, tentar query string (para compatibilidade)
+      if (!slug || slug === 'go' || slug === 'go-tracker.html') {
+        const params = new URLSearchParams(location.search);
+        slug = params.get('slug') || '';
+      }
+      
+      const target = map[slug];
+      const debug = new URLSearchParams(location.search).has('debug');
+      
+      // Se não encontrar o slug, redirecionar para home
+      if (!target) { 
+        location.replace('/'); 
+        return; 
+      }
+      
+      // Enviar evento para o dataLayer do GTM
+      window.dataLayer.push({
+        event: 'affiliate_click', 
+        affiliate_slug: slug, 
+        target_url: target, 
+        page_path: location.pathname
+      });
+      
+      // Atualizar link e mensagem
+      document.getElementById('out').href = target;
+      document.getElementById('msg').textContent = 'Você será levado para o parceiro em instantes…';
+      
+      // Adicionar fallback para navegadores sem JS
+      var noscriptMeta = document.createElement('noscript');
+      noscriptMeta.innerHTML = '<meta http-equiv="refresh" content="0;url=' + target + '">';
+      document.head.appendChild(noscriptMeta);
+      
+      // Se não estiver em debug mode, redirecionar após 350ms
+      if (!debug) {
+        setTimeout(function(){ 
+          location.replace(target); 
+        }, 350);
+      } else {
+        // Em modo debug, mostrar informações
+        document.getElementById('msg').innerHTML = '<strong>Modo Debug Ativo</strong><br>Evento disparado: affiliate_click<br>Slug: ' + slug + '<br>URL de destino: ' + target;
+      }
+    })();
+  </script>
+</body>
+</html>

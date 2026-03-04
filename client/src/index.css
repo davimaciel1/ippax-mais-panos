@@ -1,0 +1,527 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Shimmer animation for loading states */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-shimmer {
+  animation: shimmer 3s infinite;
+}
+
+:root {
+  /* IPPAX Brand Color Palette - Exact Match from Logo */
+  --teal-dark: #2C4A4A; /* Verde-azulado escuro exato da logo */
+  --teal-main: #3A5F5F; /* Verde-azulado principal da logo */
+  --teal-light: #E8F0F0; /* Verde-azulado muito claro */
+  --orange-accent: #FF6B35; /* Laranja vibrante exato da logo */
+  --orange-light: #FFF0EA; /* Laranja muito claro */
+  --slate-dark: #1A2332; /* Cinza azulado escuro moderno */
+  --slate-medium: #64748B; /* Cinza médio moderno */
+  --slate-light: #F8FAFC; /* Cinza muito claro */
+  
+  /* Base theme colors mapped to IPPAX palette */
+  --background: #FFFFFF; /* Fundo branco puro */
+  --foreground: #2C4A4A; /* Teal dark para texto principal */
+  --muted: #F8FAFC; /* Slate light para fundos suaves */
+  --muted-foreground: #64748B; /* Slate medium para texto secundário */
+  --popover: #FFFFFF; /* Fundo branco para popovers */
+  --popover-foreground: #2C4A4A; /* Teal dark para texto */
+  --card: #FFFFFF; /* Cards brancos */
+  --card-foreground: #2C4A4A; /* Texto em teal dark */
+  --border: #E2E8F0; /* Bordas suaves */
+  --input: #F8FAFC; /* Fundo de inputs */
+  --primary: #3A5F5F; /* Teal main para botões primários */
+  --primary-foreground: #FFFFFF; /* Texto branco */
+  --secondary: #E8F0F0; /* Teal light para botões secundários */
+  --secondary-foreground: #2C4A4A; /* Texto teal dark */
+  --accent: #FF6B35; /* Orange para destaques */
+  --accent-foreground: #FFFFFF; /* Texto branco */
+  --destructive: #DC2626; /* Vermelho para ações destrutivas */
+  --destructive-foreground: #FFFFFF;
+  --ring: #FF6B35; /* Orange para focus ring */
+  --radius: 0.75rem;
+  
+  /* Additional brand colors */
+  --success-green: hsl(120, 50%, 40%);
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(0, 79%, 58%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    /* Fix scroll anchoring issues */
+    overflow-anchor: auto;
+  }
+
+  /* Prevent scroll anchoring on animated elements */
+  .animate-shimmer,
+  .hover-lift,
+  .card-modern,
+  .float-animation,
+  .pulse-animation {
+    overflow-anchor: none;
+  }
+}
+
+@layer utilities {
+  .text-teal-dark {
+    color: var(--teal-dark);
+  }
+  
+  .bg-teal-dark {
+    background-color: var(--teal-dark);
+  }
+  
+  .text-teal-main {
+    color: var(--teal-main);
+  }
+  
+  .bg-teal-main {
+    background-color: var(--teal-main);
+  }
+  
+  .bg-teal-light {
+    background-color: var(--teal-light);
+  }
+  
+  .text-orange-accent {
+    color: var(--orange-accent);
+  }
+  
+  .bg-orange-accent {
+    background-color: var(--orange-accent);
+  }
+  
+  .bg-orange-light {
+    background-color: var(--orange-light);
+  }
+  
+  .text-slate-dark {
+    color: var(--slate-dark);
+  }
+  
+  .bg-slate-dark {
+    background-color: var(--slate-dark);
+  }
+  
+  .text-slate-medium {
+    color: var(--slate-medium);
+  }
+  
+  .bg-slate-light {
+    background-color: var(--slate-light);
+  }
+  
+  .border-teal-main {
+    border-color: var(--teal-main);
+  }
+  
+  .border-orange-accent {
+    border-color: var(--orange-accent);
+  }
+  
+  .border-slate-light {
+    border-color: var(--slate-light);
+  }
+}
+
+/* Before/After Slider Styles - Modern 2025 */
+.before-after-container {
+  position: relative;
+  overflow: hidden;
+  cursor: col-resize;
+  user-select: none;
+}
+
+.before-after-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
+  transform: translateX(-50%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.before-after-container:hover::before {
+  opacity: 1;
+}
+
+/* Smooth animations */
+.group:hover img {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cozy-beige);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold-main);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-secondary);
+}
+
+/* Loading states */
+.loading-shimmer {
+  background: linear-gradient(90deg, 
+    hsl(var(--light-gray)) 25%, 
+    hsl(var(--warm-gray)) 50%, 
+    hsl(var(--light-gray)) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Modern 2025 Typography */
+.text-hero {
+  font-size: clamp(3rem, 6vw, 5rem);
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  background: linear-gradient(135deg, var(--foreground) 0%, var(--medium-gray) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* IPPAX Gradient Text Effects - Modern Version */
+.text-gradient-main {
+  background: linear-gradient(90deg, var(--teal-dark) 0%, var(--teal-main) 40%, var(--teal-main) 60%, var(--orange-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-subtle {
+  background: linear-gradient(90deg, var(--teal-dark) 0%, var(--teal-main) 70%, var(--orange-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-highlight {
+  background: linear-gradient(to right, 
+    #3A5F5F 0%,
+    #507070 20%,
+    #708585 40%,
+    #C0826A 65%,
+    #EE6842 85%,
+    #FF6B35 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-balanced {
+  background: linear-gradient(90deg, var(--teal-dark) 0%, var(--teal-main) 50%, var(--orange-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Button enhancements */
+.btn-primary {
+  background: var(--gold-main);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: var(--gold-secondary);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(180, 144, 73, 0.3);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--soft-charcoal);
+  border: 2px solid var(--soft-charcoal);
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: var(--soft-charcoal);
+  color: var(--marble-bg);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(74, 58, 42, 0.3);
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+  .text-hero {
+    font-size: 2.5rem;
+  }
+}
+
+
+/* Modern 2025 Animations & Effects */
+.hover-lift {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Modern Button Styles */
+.btn-modern {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-modern::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-modern:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.pulse-animation {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Modern Card Hover */
+.card-modern {
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+}
+
+.card-modern::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+  opacity: 0;
+  transition: opacity 0.5s;
+  border-radius: var(--radius);
+  z-index: -1;
+}
+
+.card-modern:hover {
+  transform: perspective(1000px) rotateX(5deg) translateY(-10px);
+}
+
+.card-modern:hover::before {
+  opacity: 0.1;
+}
+
+/* Video Background Overlay */
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  z-index: 1;
+}
+
+/* Trust Badge Styles */
+.trust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--success-green);
+  color: white;
+  border-radius: 2rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+/* Testimonial Card */
+.testimonial-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+}
+
+/* Urgency Banner */
+.urgency-banner {
+  background: linear-gradient(90deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+}
+
+.urgency-banner::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+  animation: shimmer 3s infinite;
+}
+
+/* Modern Loading Spinner */
+.spinner-modern {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--light-gray);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Forçar tamanhos maiores para títulos principais das seções */
+h1.text-display,
+h2.text-display,
+h3.text-display,
+h4.text-display,
+.text-display {
+  font-size: 3rem !important; /* 48px */
+  line-height: 1.1 !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.03em !important;
+}
+
+@media (min-width: 768px) {
+  h1.text-display,
+  h2.text-display,
+  h3.text-display,
+  h4.text-display,
+  .text-display {
+    font-size: 3.5rem !important; /* 56px */
+  }
+}
+
+@media (min-width: 1024px) {
+  h1.text-display,
+  h2.text-display,
+  h3.text-display,
+  h4.text-display,
+  .text-display {
+    font-size: 4rem !important; /* 64px */
+  }
+}

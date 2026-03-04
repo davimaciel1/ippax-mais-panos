@@ -1,0 +1,26 @@
+/* Disable all animations temporarily */
+* {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Disable framer-motion animations */
+[data-framer-component-type] {
+  transform: none !important;
+}
+
+/* Prevent scroll anchoring issues */
+body {
+  overflow-anchor: none;
+}
+
+/* Disable specific problematic animations */
+.float-animation,
+.pulse-animation,
+.hover-lift,
+.card-modern,
+.animate-shimmer,
+.loading-shimmer {
+  animation: none !important;
+  transform: none !important;
+}
