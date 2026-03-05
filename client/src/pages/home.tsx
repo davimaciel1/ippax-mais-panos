@@ -4,7 +4,8 @@ import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import B2BContactForm from "@/components/b2b-contact-form";
 import WhatsAppButton from "@/components/whatsapp-button";
-import { Package, RefreshCw, Shield, Droplets, Check, ChevronRight, Sparkles, Droplet, Car, UtensilsCrossed } from "lucide-react";
+import { Package, RefreshCw, Shield, Droplets, Check, ChevronRight, Sparkles, Droplet, Car, UtensilsCrossed, Loader2 } from "lucide-react";
+import { trackEvent } from "@/components/tracking-pixels";
 
 // Links de afiliados - Atualizados em 03/03/2026
 const MARKETPLACE_LINKS = {
@@ -78,9 +79,18 @@ export default function Home() {
   const [optinPhone, setOptinPhone] = useState("");
   const [optinDone, setOptinDone] = useState(false);
 
-  // Handle ?produto= URL param
+  // Capture UTM params and save to sessionStorage
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
+
+    // Save UTM params
+    const utmKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
+    utmKeys.forEach((key) => {
+      const value = params.get(key);
+      if (value) sessionStorage.setItem(key, value);
+    });
+
+    // Handle ?produto= scroll
     const produto = params.get("produto");
     if (produto) {
       setTimeout(() => {
@@ -90,11 +100,41 @@ export default function Home() {
     }
   }, []);
 
-  const handleOptin = (e: React.FormEvent) => {
+  const [optinLoading, setOptinLoading] = useState(false);
+  const [optinError, setOptinError] = useState("");
+
+  const handleOptin = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Integrar com Upseller API para salvar opt-in
-    console.log("RCS Opt-in:", { email: optinEmail, phone: optinPhone });
-    setOptinDone(true);
+    setOptinLoading(true);
+    setOptinError("");
+
+    const utmSource = sessionStorage.getItem("utm_source") || "";
+    const utmMedium = sessionStorage.getItem("utm_medium") || "";
+    const utmCampaign = sessionStorage.getItem("utm_campaign") || "";
+
+    try {
+      const res = await fetch("https://upseller.ippaxmais.com.br/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: optinEmail,
+          telefone: optinPhone || null,
+          utm_source: utmSource,
+          utm_medium: utmMedium,
+          utm_campaign: utmCampaign,
+        }),
+      });
+      if (!res.ok) throw new Error("Erro ao cadastrar");
+      setOptinDone(true);
+      trackEvent.all("lead_signup", {
+        utm_source: utmSource,
+        utm_campaign: utmCampaign,
+      });
+    } catch {
+      setOptinError("Erro ao cadastrar. Tente novamente.");
+    } finally {
+      setOptinLoading(false);
+    }
   };
 
   return (
@@ -377,11 +417,21 @@ export default function Home() {
                   onChange={(e) => setOptinPhone(e.target.value)}
                   className="w-full px-5 py-4 border-2 border-slate-200 rounded-xl text-base focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition-all"
                 />
+                {optinError && (
+                  <p className="text-red-500 text-sm">{optinError}</p>
+                )}
                 <button
                   type="submit"
-                  className="w-full bg-orange-accent hover:bg-orange-dark text-white py-4 rounded-xl font-bold text-lg shadow-lg shadow-orange-accent/30 transition-all hover:-translate-y-1"
+                  disabled={optinLoading}
+                  className="w-full bg-orange-accent hover:bg-orange-dark text-white py-4 rounded-xl font-bold text-lg shadow-lg shadow-orange-accent/30 transition-all hover:-translate-y-1 disabled:opacity-60"
                 >
-                  Quero Receber Ofertas!
+                  {optinLoading ? (
+                    <span className="flex items-center justify-center gap-2">
+                      <Loader2 className="w-5 h-5 animate-spin" /> Cadastrando...
+                    </span>
+                  ) : (
+                    "Quero Receber Ofertas!"
+                  )}
                 </button>
                 <p className="text-xs text-slate-400 mt-2">
                   Ao se cadastrar, você concorda com o uso dos dados para comunicações da Ippax +Mais, conforme a LGPD. Pode cancelar a qualquer momento.
