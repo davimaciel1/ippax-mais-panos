@@ -7,14 +7,14 @@ import WhatsAppButton from "@/components/whatsapp-button";
 import { Package, RefreshCw, Shield, Droplets, Check, ChevronRight, Sparkles, Droplet, Car, UtensilsCrossed, Loader2 } from "lucide-react";
 import { trackEvent } from "@/components/tracking-pixels";
 
-// Links de afiliados - Atualizados em 03/03/2026
+// Links de afiliados - Atualizados em 05/03/2026
 const MARKETPLACE_LINKS = {
   mercadolivre_20x40: "https://www.mercadolivre.com.br/pano-multiuso-tipo-perfex--azul--600--unidade-240m-20-cm/up/MLBU3810544994",
   mercadolivre_28x40: "https://www.mercadolivre.com.br/pano-multiuso-para-limpeza-ippax-mais-28x40cm-600un-azul-240m/up/MLBU3819226008",
-  amazon_20x40: "https://amzn.to/4juDCMM",
-  amazon_28x40: "https://amzn.to/4jm23vv",
-  shopee_20x40: "https://s.shopee.com.br/4AtPq0GxIG",
-  shopee_28x40: "https://s.shopee.com.br/3Vdj2p0gPR",
+  amazon_20x40: "https://amzn.to/47tcwk3",
+  amazon_28x40: "https://amzn.to/47tcwk3",
+  shopee_20x40: "https://s.shopee.com.br/10xwx3ADDr",
+  shopee_28x40: "https://s.shopee.com.br/10xwx3ADDr",
 };
 
 const MOTION_PROPS = new Set([

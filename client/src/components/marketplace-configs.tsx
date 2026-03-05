@@ -1,12 +1,12 @@
 import { ShoppingBag, Store, Package, Home } from "@/components/ui/optimized-icons";
 import { getAssetUrl } from "@/lib/config";
 
-// Marketplace configurations - Links atualizados em 03/03/2026
+// Marketplace configurations - Links atualizados em 05/03/2026
 export const marketplaceConfigs = {
   amazon: {
     name: 'amazon',
     displayName: 'Amazon',
-    affiliateLink: 'https://amzn.to/4juDCMM', // Pano 20x40
+    affiliateLink: 'https://amzn.to/47tcwk3', // Pano afiliado
     colors: {
       primary: '#FF9900',
       secondary: '#FF6600',
@@ -34,7 +34,7 @@ export const marketplaceConfigs = {
   shopee: {
     name: 'shopee',
     displayName: 'Shopee',
-    affiliateLink: 'https://s.shopee.com.br/4AtPq0GxIG', // Pano 20x40
+    affiliateLink: 'https://s.shopee.com.br/10xwx3ADDr', // Pano afiliado
     colors: {
       primary: '#EE4D2D',
       secondary: '#FF6B35',
