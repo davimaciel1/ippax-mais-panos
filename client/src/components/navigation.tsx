@@ -201,7 +201,7 @@ export default function Navigation() {
                     </AnimatePresence>
                   </Button>
                 </SheetTrigger>
-                <SheetContent side="right" className="w-[320px] bg-gradient-to-b from-white to-slate-50">
+                <SheetContent side="right" className="w-[280px] sm:w-[320px] bg-gradient-to-b from-white to-slate-50">
                   <SheetTitle className="sr-only">Menu de navegacao</SheetTitle>
                   <SheetDescription className="sr-only">
                     Acesse as secoes de produtos, dicas de uso e atacado.

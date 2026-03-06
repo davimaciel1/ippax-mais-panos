@@ -147,36 +147,36 @@ export default function Home() {
       </div>
 
       {/* Trust Bar */}
-      <section className="py-16 bg-white border-b border-slate-50">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+      <section className="py-10 md:py-16 bg-white border-b border-slate-50">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-8">
           {[
             { icon: Package, label: "600 Unidades", sub: "Rende muito mais" },
             { icon: RefreshCw, label: "Reutilizável", sub: "Lave e use 10x" },
             { icon: Shield, label: "Super Resistente", sub: "Tecnologia HydroSpun" },
             { icon: Droplets, label: "Ultra Absorvente", sub: "Seca na hora" },
           ].map((item, i) => (
-            <div key={i} className="flex flex-col items-center text-center p-6 rounded-2xl hover:bg-slate-50 transition-colors">
-              <div className="w-16 h-16 bg-teal-50 rounded-2xl flex items-center justify-center mb-4 text-teal-dark">
-                <item.icon className="w-8 h-8" />
+            <div key={i} className="flex flex-col items-center text-center p-3 md:p-6 rounded-2xl hover:bg-slate-50 transition-colors">
+              <div className="w-12 h-12 md:w-16 md:h-16 bg-teal-50 rounded-xl md:rounded-2xl flex items-center justify-center mb-2 md:mb-4 text-teal-dark">
+                <item.icon className="w-6 h-6 md:w-8 md:h-8" />
               </div>
-              <h3 className="font-bold text-xl text-slate-800">{item.label}</h3>
-              <p className="text-slate-500">{item.sub}</p>
+              <h3 className="font-bold text-base md:text-xl text-slate-800">{item.label}</h3>
+              <p className="text-slate-500 text-xs md:text-base">{item.sub}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* UGC Video Testimonial Section */}
-      <section className="py-24 bg-gradient-to-b from-white to-slate-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="inline-block bg-orange-100 text-orange-600 px-4 py-2 rounded-full text-sm font-semibold mb-4">
-              📱 Veja na Prática
+      <section className="py-14 md:py-24 bg-gradient-to-b from-white to-slate-50">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <div className="text-center mb-10 md:mb-16">
+            <span className="inline-block bg-orange-100 text-orange-600 px-4 py-2 rounded-full text-sm font-semibold mb-3">
+              Veja na Prática
             </span>
-            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-3">
               Clientes Reais, <span className="text-teal-dark">Resultados Reais</span>
             </h2>
-            <p className="text-xl text-slate-500 max-w-2xl mx-auto">
+            <p className="text-base md:text-xl text-slate-500 max-w-2xl mx-auto">
               Veja como nossos clientes estão usando o Pano Multiuso IPPAX +MAIS no dia a dia
             </p>
           </div>
@@ -185,12 +185,12 @@ export default function Home() {
             {/* Phone Frame Container */}
             <div className="relative">
               {/* Phone Frame */}
-              <div className="relative bg-slate-900 rounded-[3rem] p-3 shadow-2xl">
+              <div className="relative bg-slate-900 rounded-[2.5rem] md:rounded-[3rem] p-2 md:p-3 shadow-2xl">
                 {/* Phone Notch */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-slate-900 rounded-b-2xl z-10" />
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 md:w-32 h-6 md:h-7 bg-slate-900 rounded-b-2xl z-10" />
 
                 {/* Video Container */}
-                <div className="relative w-[320px] h-[580px] md:w-[360px] md:h-[640px] rounded-[2.5rem] overflow-hidden bg-black">
+                <div className="relative w-[260px] h-[460px] md:w-[360px] md:h-[640px] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden bg-black">
                   <video
                     className="w-full h-full object-cover"
                     autoPlay
@@ -247,28 +247,28 @@ export default function Home() {
       </section>
 
       {/* Products Grid */}
-      <section id="catalogo" className="py-32 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl font-black text-slate-900 mb-6">Nossos Produtos</h2>
-            <p className="text-xl text-slate-500 max-w-2xl mx-auto">Escolha o tamanho ideal para sua necessidade. Qualidade profissional em ambos os formatos.</p>
+      <section id="catalogo" className="py-16 md:py-32 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <div className="text-center mb-10 md:mb-20">
+            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4 md:mb-6">Nossos Produtos</h2>
+            <p className="text-base md:text-xl text-slate-500 max-w-2xl mx-auto">Escolha o tamanho ideal para sua necessidade. Qualidade profissional em ambos os formatos.</p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-6 md:gap-12 max-w-6xl mx-auto">
             {/* Product 1 */}
-            <div className="group bg-white rounded-[2.5rem] p-8 md:p-12 shadow-xl hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col items-center text-center relative overflow-hidden">
+            <div className="group bg-white rounded-[1.5rem] md:rounded-[2.5rem] p-5 md:p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col items-center text-center relative overflow-hidden">
               <div className="absolute top-0 right-0 bg-[#FFE600] text-slate-900 font-bold px-6 py-3 rounded-bl-3xl z-10">
                 MAIS VENDIDO
               </div>
 
-              <div className="w-full h-80 bg-slate-50 rounded-[2rem] mb-10 flex items-center justify-center p-8 group-hover:scale-105 transition-transform duration-500">
+              <div className="w-full h-48 md:h-80 bg-slate-50 rounded-[1.5rem] md:rounded-[2rem] mb-6 md:mb-10 flex items-center justify-center p-4 md:p-8 group-hover:scale-105 transition-transform duration-500">
                 <img src="/assets/pano-20x40.webp" alt="Pano 20x40" className="w-full h-full object-contain drop-shadow-lg" />
               </div>
 
-              <h3 className="text-3xl font-bold text-slate-900 mb-2">Pano Multiuso 20x40cm</h3>
-              <p className="text-slate-500 mb-8 text-lg">Perfeito para uso diário, bancadas e cozinhas.</p>
+              <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">Pano Multiuso 20x40cm</h3>
+              <p className="text-slate-500 mb-5 md:mb-8 text-sm md:text-lg">Perfeito para uso diário, bancadas e cozinhas.</p>
 
-              <div className="grid grid-cols-2 gap-4 w-full mb-8">
+              <div className="grid grid-cols-2 gap-3 md:gap-4 w-full mb-5 md:mb-8">
                 <div className="bg-slate-50 p-4 rounded-2xl">
                   <span className="block text-2xl font-bold text-teal-dark">600</span>
                   <span className="text-sm text-slate-500">Unidades</span>
@@ -296,19 +296,19 @@ export default function Home() {
             </div>
 
             {/* Product 2 */}
-            <div className="group bg-white rounded-[2.5rem] p-8 md:p-12 shadow-xl hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col items-center text-center relative overflow-hidden">
+            <div className="group bg-white rounded-[1.5rem] md:rounded-[2.5rem] p-5 md:p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col items-center text-center relative overflow-hidden">
               <div className="absolute top-0 right-0 bg-orange-accent text-white font-bold px-6 py-3 rounded-bl-3xl z-10">
                 PREMIUM
               </div>
 
-              <div className="w-full h-80 bg-orange-50/30 rounded-[2rem] mb-10 flex items-center justify-center p-8 group-hover:scale-105 transition-transform duration-500">
+              <div className="w-full h-48 md:h-80 bg-orange-50/30 rounded-[1.5rem] md:rounded-[2rem] mb-6 md:mb-10 flex items-center justify-center p-4 md:p-8 group-hover:scale-105 transition-transform duration-500">
                 <img src="/assets/pano-28x40.png" alt="Pano 28x40" className="w-full h-full object-contain drop-shadow-lg" />
               </div>
 
-              <h3 className="text-3xl font-bold text-slate-900 mb-2">Pano Multiuso 28x40cm</h3>
-              <p className="text-slate-500 mb-8 text-lg">Área maior para limpezas pesadas e profissionais.</p>
+              <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">Pano Multiuso 28x40cm</h3>
+              <p className="text-slate-500 mb-5 md:mb-8 text-sm md:text-lg">Área maior para limpezas pesadas e profissionais.</p>
 
-              <div className="grid grid-cols-2 gap-4 w-full mb-8">
+              <div className="grid grid-cols-2 gap-3 md:gap-4 w-full mb-5 md:mb-8">
                 <div className="bg-slate-50 p-4 rounded-2xl">
                   <span className="block text-2xl font-bold text-orange-accent">600</span>
                   <span className="text-sm text-slate-500">Unidades</span>
@@ -339,20 +339,20 @@ export default function Home() {
       </section>
 
       {/* Dicas de Uso */}
-      <section id="dicas" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="inline-block bg-teal-100 text-teal-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+      <section id="dicas" className="py-14 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <div className="text-center mb-10 md:mb-16">
+            <span className="inline-block bg-teal-100 text-teal-700 px-4 py-2 rounded-full text-sm font-semibold mb-3">
               Dicas Profissionais
             </span>
-            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-3">
               Dicas de <span className="text-teal-dark">Uso</span>
             </h2>
-            <p className="text-xl text-slate-500 max-w-2xl mx-auto">
+            <p className="text-base md:text-xl text-slate-500 max-w-2xl mx-auto">
               Aproveite ao máximo cada pano com essas dicas
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8">
             {[
               { icon: UtensilsCrossed, title: "Cozinha", desc: "Use úmido com detergente neutro. Remove gordura sem esforço e não deixa marcas no inox.", color: "bg-orange-100 text-orange-600" },
               { icon: Sparkles, title: "Vidros & Espelhos", desc: "Use seco para polir. As fibras finas não deixam fiapos nem marcas.", color: "bg-blue-100 text-blue-600" },
@@ -364,13 +364,13 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white rounded-[2rem] p-8 shadow-lg hover:shadow-xl transition-all duration-400 border border-slate-100 group"
+                className="bg-white rounded-xl md:rounded-[2rem] p-4 md:p-8 shadow-lg hover:shadow-xl transition-all duration-400 border border-slate-100 group"
               >
-                <div className={`w-14 h-14 ${tip.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
-                  <tip.icon className="w-7 h-7" />
+                <div className={`w-10 h-10 md:w-14 md:h-14 ${tip.color} rounded-xl md:rounded-2xl flex items-center justify-center mb-3 md:mb-6 group-hover:scale-110 transition-transform`}>
+                  <tip.icon className="w-5 h-5 md:w-7 md:h-7" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">{tip.title}</h3>
-                <p className="text-slate-500 leading-relaxed">{tip.desc}</p>
+                <h3 className="text-sm md:text-xl font-bold text-slate-900 mb-1 md:mb-3">{tip.title}</h3>
+                <p className="text-slate-500 text-xs md:text-base leading-relaxed">{tip.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -378,17 +378,17 @@ export default function Home() {
       </section>
 
       {/* Opt-in Section */}
-      <section className="py-20 bg-gradient-to-b from-slate-50 to-white">
-        <div className="max-w-xl mx-auto px-6">
+      <section className="py-14 md:py-20 bg-gradient-to-b from-slate-50 to-white">
+        <div className="max-w-xl mx-auto px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="bg-white rounded-[2rem] shadow-xl p-10 border border-slate-100 text-center"
+            className="bg-white rounded-2xl md:rounded-[2rem] shadow-xl p-6 md:p-10 border border-slate-100 text-center"
           >
             <span className="inline-block bg-orange-100 text-orange-600 px-4 py-2 rounded-full text-sm font-semibold mb-4">
               Ofertas Exclusivas
             </span>
-            <h2 className="text-3xl font-black text-slate-900 mb-3">
+            <h2 className="text-2xl md:text-3xl font-black text-slate-900 mb-3">
               Quer até <span className="text-orange-accent">20% OFF</span>?
             </h2>
             <p className="text-slate-500 mb-8">

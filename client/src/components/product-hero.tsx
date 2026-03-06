@@ -58,7 +58,7 @@ export default function ProductHero() {
 
   return (
     <>
-      <section className="relative bg-gradient-to-br from-slate-50 via-white to-teal-50/30 py-12 md:py-20 min-h-[calc(100vh-120px)] flex items-center overflow-hidden">
+      <section className="relative bg-gradient-to-br from-slate-50 via-white to-teal-50/30 py-8 md:py-20 min-h-[calc(100vh-80px)] md:min-h-[calc(100vh-120px)] flex items-center overflow-hidden">
         {/* Decorative background */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 w-96 h-96 bg-teal-100/40 rounded-full blur-3xl" />
@@ -73,7 +73,7 @@ export default function ProductHero() {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="space-y-8"
+              className="space-y-5 md:space-y-8"
             >
               {/* Badge */}
               <div className="inline-flex items-center gap-2 bg-teal-100 text-teal-700 px-4 py-2 rounded-full text-sm font-semibold">
@@ -83,24 +83,24 @@ export default function ProductHero() {
 
               {/* Title */}
               <div className="space-y-4">
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-tight">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black leading-tight">
                   <span className="text-slate-800">Pano Multiuso</span>
                   <br />
                   <span className="bg-gradient-to-r from-teal-600 to-teal-500 bg-clip-text text-transparent">IPPAX +MAIS</span>
                 </h1>
-                <p className="text-xl md:text-2xl text-slate-600 max-w-lg">
+                <p className="text-base md:text-xl lg:text-2xl text-slate-600 max-w-lg">
                   Alta absorção, reutilizável e super resistente. <span className="font-semibold text-orange-500">600 unidades</span> por rolo.
                 </p>
               </div>
 
               {/* Features */}
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-2 md:gap-4">
                 {[
                   { icon: Check, text: "Não solta pelos" },
                   { icon: Shield, text: "Antibactérias" },
                   { icon: Truck, text: "Frete Grátis" },
                 ].map((feature, i) => (
-                  <div key={i} className="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm border border-slate-100">
+                  <div key={i} className="flex items-center gap-2 bg-white px-3 py-1.5 md:px-4 md:py-2 rounded-full shadow-sm border border-slate-100">
                     <feature.icon className="w-4 h-4 text-teal-600" />
                     <span className="text-sm font-medium text-slate-700">{feature.text}</span>
                   </div>
@@ -113,7 +113,7 @@ export default function ProductHero() {
                   <p className="text-sm font-medium text-slate-500 mb-3 uppercase tracking-wide">
                     Compre nos principais marketplaces:
                   </p>
-                  <p className="text-3xl md:text-4xl font-bold text-orange-500 mb-6">
+                  <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-orange-500 mb-4 md:mb-6">
                     Economia Garantida
                   </p>
                 </div>
@@ -173,7 +173,7 @@ export default function ProductHero() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
-                  className="absolute -bottom-6 -left-6 lg:-bottom-8 lg:-left-8 bg-white rounded-2xl shadow-xl p-5 max-w-[260px] border border-slate-100"
+                  className="absolute -bottom-4 left-2 md:-bottom-6 md:-left-6 lg:-bottom-8 lg:-left-8 bg-white rounded-2xl shadow-xl p-4 md:p-5 max-w-[220px] md:max-w-[260px] border border-slate-100"
                 >
                   <h4 className="font-bold mb-3 text-slate-800 flex items-center gap-2">
                     <div className="w-2 h-2 bg-teal-500 rounded-full"></div>
