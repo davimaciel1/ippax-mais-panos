@@ -58,7 +58,7 @@ export default function ProductHero() {
 
   return (
     <>
-      <section className="relative bg-gradient-to-br from-slate-50 via-white to-teal-50/30 py-8 md:py-20 min-h-[calc(100vh-80px)] md:min-h-[calc(100vh-120px)] flex items-center overflow-hidden">
+      <section className="relative bg-gradient-to-br from-slate-50 via-white to-teal-50/30 py-4 md:py-20 md:min-h-[calc(100vh-120px)] flex items-center overflow-hidden">
         {/* Decorative background */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 w-96 h-96 bg-teal-100/40 rounded-full blur-3xl" />
@@ -66,23 +66,23 @@ export default function ProductHero() {
         </div>
 
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-6 lg:gap-16 items-center">
 
             {/* Left side - Product Information */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="space-y-5 md:space-y-8"
+              className="space-y-3 md:space-y-8"
             >
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 bg-teal-100 text-teal-700 px-4 py-2 rounded-full text-sm font-semibold">
+              {/* Badge - hidden on mobile for compactness */}
+              <div className="hidden md:inline-flex items-center gap-2 bg-teal-100 text-teal-700 px-4 py-2 rounded-full text-sm font-semibold">
                 <Star className="w-4 h-4" />
                 <span>Mais Vendido nos Marketplaces</span>
               </div>
 
               {/* Title */}
-              <div className="space-y-4">
+              <div className="space-y-2 md:space-y-4">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black leading-tight">
                   <span className="text-slate-800">Pano Multiuso</span>
                   <br />
@@ -108,12 +108,12 @@ export default function ProductHero() {
               </div>
 
               {/* CTA Section */}
-              <div className="space-y-6 pt-4">
+              <div className="space-y-3 md:space-y-6 pt-2 md:pt-4">
                 <div>
-                  <p className="text-sm font-medium text-slate-500 mb-3 uppercase tracking-wide">
+                  <p className="text-xs md:text-sm font-medium text-slate-500 mb-2 md:mb-3 uppercase tracking-wide">
                     Compre nos principais marketplaces:
                   </p>
-                  <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-orange-500 mb-4 md:mb-6">
+                  <p className="hidden md:block text-2xl md:text-3xl lg:text-4xl font-bold text-orange-500 mb-4 md:mb-6">
                     Economia Garantida
                   </p>
                 </div>
@@ -139,7 +139,7 @@ export default function ProductHero() {
                   ))}
                 </div>
 
-                <p className="text-sm text-slate-500 flex items-center gap-2">
+                <p className="text-xs md:text-sm text-slate-500 flex items-center gap-2">
                   <Truck className="w-4 h-4 text-teal-600" />
                   Frete Grátis + Parcelamento em até 12x
                 </p>

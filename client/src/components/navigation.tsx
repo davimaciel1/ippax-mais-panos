@@ -110,11 +110,11 @@ export default function Navigation() {
 
   return (
     <>
-      {/* Top Promotional Bar */}
+      {/* Top Promotional Bar - hidden on mobile */}
       <motion.div
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className="bg-gradient-to-r from-teal-600 to-teal-700 text-white relative overflow-hidden"
+        className="hidden md:block bg-gradient-to-r from-teal-600 to-teal-700 text-white relative overflow-hidden"
       >
         <div className="relative py-3 px-4">
           <div className="max-w-7xl mx-auto flex items-center justify-center">
@@ -126,8 +126,8 @@ export default function Navigation() {
       </motion.div>
 
       <nav className={`sticky top-0 z-50 transition-all duration-500 ${scrolled
-        ? "bg-white/95 backdrop-blur-xl shadow-xl py-2"
-        : "bg-white shadow-sm py-4"
+        ? "bg-white/95 backdrop-blur-xl shadow-xl py-1 md:py-2"
+        : "bg-white shadow-sm py-2 md:py-4"
         }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
@@ -136,7 +136,7 @@ export default function Navigation() {
               className="flex items-center cursor-pointer hover:scale-105 active:scale-95 transition-transform"
               onClick={() => setLocation("/")}
             >
-              <LogoImage className="h-12 md:h-14 object-contain" />
+              <LogoImage className="h-8 md:h-14 object-contain" />
             </div>
 
             {/* Desktop Navigation */}
