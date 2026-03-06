@@ -73,7 +73,7 @@ export default function ProductHero() {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="space-y-3 md:space-y-8"
+              className="flex flex-col gap-3 md:gap-8 order-2 lg:order-none"
             >
               {/* Badge - hidden on mobile for compactness */}
               <div className="hidden md:inline-flex items-center gap-2 bg-teal-100 text-teal-700 px-4 py-2 rounded-full text-sm font-semibold">
@@ -82,7 +82,7 @@ export default function ProductHero() {
               </div>
 
               {/* Title */}
-              <div className="space-y-2 md:space-y-4">
+              <div className="order-2 space-y-2 md:space-y-4">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black leading-tight">
                   <span className="text-slate-800">Pano Multiuso</span>
                   <br />
@@ -94,7 +94,7 @@ export default function ProductHero() {
               </div>
 
               {/* Features */}
-              <div className="flex flex-wrap gap-2 md:gap-4">
+              <div className="order-3 flex flex-wrap gap-2 md:gap-4">
                 {[
                   { icon: Check, text: "Não solta pelos" },
                   { icon: Shield, text: "Antibactérias" },
@@ -107,18 +107,11 @@ export default function ProductHero() {
                 ))}
               </div>
 
-              {/* CTA Section */}
-              <div className="space-y-3 md:space-y-6 pt-2 md:pt-4">
-                <div>
-                  <p className="text-xs md:text-sm font-medium text-slate-500 mb-2 md:mb-3 uppercase tracking-wide">
-                    Compre nos principais marketplaces:
-                  </p>
-                  <p className="hidden md:block text-2xl md:text-3xl lg:text-4xl font-bold text-orange-500 mb-4 md:mb-6">
-                    Economia Garantida
-                  </p>
-                </div>
-
-                {/* Marketplace Buttons - Single Row */}
+              {/* Marketplace Buttons - First on mobile */}
+              <div className="order-1 md:order-5">
+                <p className="text-xs md:text-sm font-medium text-slate-500 mb-2 md:mb-3 uppercase tracking-wide">
+                  Compre nos principais marketplaces:
+                </p>
                 <div className="flex items-center gap-4 flex-wrap">
                   {marketplaces.map(({ config, name }) => (
                     <a
@@ -138,12 +131,17 @@ export default function ProductHero() {
                     </a>
                   ))}
                 </div>
-
-                <p className="text-xs md:text-sm text-slate-500 flex items-center gap-2">
-                  <Truck className="w-4 h-4 text-teal-600" />
-                  Frete Grátis + Parcelamento em até 12x
-                </p>
               </div>
+
+              {/* Desktop: Economia Garantida */}
+              <p className="hidden md:block text-2xl md:text-3xl lg:text-4xl font-bold text-orange-500 md:order-4">
+                Economia Garantida
+              </p>
+
+              <p className="order-4 md:order-6 text-xs md:text-sm text-slate-500 flex items-center gap-2">
+                <Truck className="w-4 h-4 text-teal-600" />
+                Frete Grátis + Parcelamento em até 12x
+              </p>
             </motion.div>
 
             {/* Right side - Product Image */}
@@ -151,7 +149,7 @@ export default function ProductHero() {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
+              className="relative order-1 lg:order-none"
             >
               <div className="relative">
                 {/* Main Image */}
@@ -173,7 +171,7 @@ export default function ProductHero() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
-                  className="absolute -bottom-4 left-2 md:-bottom-6 md:-left-6 lg:-bottom-8 lg:-left-8 bg-white rounded-2xl shadow-xl p-4 md:p-5 max-w-[220px] md:max-w-[260px] border border-slate-100"
+                  className="hidden md:block absolute md:-bottom-6 md:-left-6 lg:-bottom-8 lg:-left-8 bg-white rounded-2xl shadow-xl p-4 md:p-5 max-w-[220px] md:max-w-[260px] border border-slate-100"
                 >
                   <h4 className="font-bold mb-3 text-slate-800 flex items-center gap-2">
                     <div className="w-2 h-2 bg-teal-500 rounded-full"></div>
