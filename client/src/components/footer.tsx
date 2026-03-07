@@ -258,6 +258,10 @@ export default function Footer() {
             <p className="text-slate-500 text-sm">
               © 2026 IPPAX +MAIS — CONNECT TRADES IMPORTAÇÃO E EXPORTAÇÃO LTDA. Todos os direitos reservados.
             </p>
+            <div className="flex gap-4 text-sm text-slate-500">
+              <a href="/privacidade" className="hover:text-teal-400 transition-colors">Política de Privacidade</a>
+              <a href="/termos" className="hover:text-teal-400 transition-colors">Termos de Serviço</a>
+            </div>
           </div>
         </motion.div>
       </div>
